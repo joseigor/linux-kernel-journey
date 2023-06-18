@@ -34,35 +34,34 @@ Below is a simplified diagram of the release cycle.
 Taken the diagram above as an example, lets do an exercise to list all commits/patches that were picked up by from the
 upstream kernel tree and merged into the stable tree between `v6.2` and `v6.2.1`.
 
-    ```bash
-        #!/bin/bash
-        # Clone the stable tree
-        git clone https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git --depth 1 linux-stable
-        cd linux-stable
-        # List all commits that were picked up from the upstream tree and merged into the stable tree between
-        # v6.2 and v6.2.1. Feel free to change the range of tags to whatever you want.
-         git log --pretty v6.2...v6.2.1 | grep -oP 'commit .* upstream\.$' | awk '{print $2}'
-    ```
+```bash
+# Clone the stable tree
+$ git clone https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git --depth 1 linux-stable
+$ cd linux-stable
+# List all commits that were picked up from the upstream tree and merged into the stable tree between
+# v6.2 and v6.2.1. Feel free to change the range of tags to whatever you want.
+$ git log --pretty v6.2...v6.2.1 | grep -oP 'commit .* upstream\.$' | awk '{print $2}'
+```
 
 Paste the script above into a file and run it.
 
 The output of the script above is the list of commits hashes that were picked up from the upstream tree and merged into
 the stable tree between `v6.2` and `v6.2.1`:
 
-    ```bash
-    f3dd0c53370e70c0f9b7e931bbec12916f3bb8cc
-    78f7a3fd6dc66cb788c21d7705977ed13c879351
-    118901ad1f25d2334255b3d50512fa20591531cd
-    0d9bdd8a550170306c2021b8d6766c5343b870c2
-    3004e8d2a0a98bbf4223ae146464fadbff68bf78
-    6c6cd913accd77008f74a1a9d57b816db3651daa
-    36dd7a4c6226133b0b7aa92b8e604e688d958d0c
-    47e91fdfa511139f2549687edb0d8649b123227b
-    923510c88d2b7d947c4217835fd9ca6bd65cc56c
-    ac0ee0a9560c97fa5fe1409e450c2425d4ebd17a
-    db7adcfd1cec4e95155e37bc066fddab302c6340
-    74e19ef0ff8061ef55957c3abd71614ef0f42f47
-    ```
+```bash
+f3dd0c53370e70c0f9b7e931bbec12916f3bb8cc
+78f7a3fd6dc66cb788c21d7705977ed13c879351
+118901ad1f25d2334255b3d50512fa20591531cd
+0d9bdd8a550170306c2021b8d6766c5343b870c2
+3004e8d2a0a98bbf4223ae146464fadbff68bf78
+6c6cd913accd77008f74a1a9d57b816db3651daa
+36dd7a4c6226133b0b7aa92b8e604e688d958d0c
+47e91fdfa511139f2549687edb0d8649b123227b
+923510c88d2b7d947c4217835fd9ca6bd65cc56c
+ac0ee0a9560c97fa5fe1409e450c2425d4ebd17a
+db7adcfd1cec4e95155e37bc066fddab302c6340
+74e19ef0ff8061ef55957c3abd71614ef0f42f47
+```
 
 ## References and further reading
 
